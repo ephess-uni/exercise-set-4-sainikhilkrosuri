@@ -16,21 +16,21 @@ FILENAME = get_data_file_path("messages.log")
 
 
 def time_between_shutdowns(logfile):
-    shutdown_entries = get_shutdown_events(logfile)
+    shutdown = get_shutdown_events(logfile)
     
-    if len(shutdown_entries) < 2:
+    if len(shutdown) < 2:
         return timedelta()
     
-    timestamps = []
-    for entry in shutdown_entries:
+    timestamps_list = []
+    for entry in shutdown:
         split_entry = entry.split()
         timestamp = split_entry[1]
-        timestamps.append(logstamp_to_datetime(timestamp))
+        timestamps_list.append(logstamp_to_datetime(timestamp))
     
     timestamps.sort() 
 
-    first_shutdown_time = timestamps[0]
-    last_shutdown_time = timestamps[-1]
+    first_shutdown_time = timestamps_list[0]
+    last_shutdown_time = timestamps_list[-1]
 
     time_difference = last_shutdown_time - first_shutdown_time
     return time_difference
