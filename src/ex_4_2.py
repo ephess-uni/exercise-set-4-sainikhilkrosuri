@@ -3,7 +3,10 @@ from datetime import datetime
 
 
 def logstamp_to_datetime(datestr):
-    return datetime.strptime(datestr, '%Y-%m-%dT%H:%M:%S')
+    datestr = '2023-12-08T10:30:00'
+    formated_str = '%Y-%m-%dT%H:%M:%S'
+    final_dt = datetime.strptime(datestr, format_str)
+    return final_dt
 
 
 # >>>> The code below will call your function and print the results
